@@ -33,7 +33,10 @@ validation_data_loader = DataLoader(dataset=val_dataloader, num_workers=opt.thre
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
 def test():
-    generator.load_state_dict(torch.load(r"../result/saved_models/generator_%d.pth" % opt.epoch))
+    if cuda:
+        generator.load_state_dict(torch.load(r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\result\\saved_models\\generator_%d.pth" % opt.epoch, weights_only=True))
+    else:
+        generator.load_state_dict(torch.load(r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\result\\saved_models\\generator_%d.pth" % opt.epoch, map_location=torch.device('cpu'), weights_only=True))
 
     index = 0
     for i, batch in enumerate(validation_data_loader):
@@ -53,7 +56,7 @@ def test():
         var_n = var_n.detach().cpu().numpy()[0]
 
         imgout_test = imgout_test * var_n + mean_n
-        root_result_test = r"../result/test/"
+        root_result_test = r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\result\\test"
         filename_result_test = str(index) + '_test.tif'
         filename_abs_root_test = os.path.join(root_result_test, filename_result_test)
         io.imsave(filename_abs_root_test, imgout_test)
