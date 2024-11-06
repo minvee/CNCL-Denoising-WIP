@@ -10,12 +10,12 @@ from PIL import Image
 import numpy as np
 
 #Path of the data set
-path_noisy = r"../data/noisy/"
-path_clean = r"../data/clean/"
+path_noisy = r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\data\\noisy"
+path_clean = r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\data\\clean"
 
 #Divide the data set according to the txt files
-noisy_txt = r"../data/dataset_division/train_noisy.txt"
-clean_txt = r"../data/dataset_division/train_clean.txt"
+noisy_txt = r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\data\\dataset_division\\train_noisy.txt"
+clean_txt = r"C:\\Users\\viviv\\Documents\\ITP2\\CNCL-denoising\\data\\dataset_division\\train_clean.txt"
 
 noisy_list = list()
 clean_list = list()
